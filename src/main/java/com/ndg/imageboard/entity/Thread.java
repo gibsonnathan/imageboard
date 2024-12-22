@@ -4,13 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
+@Entity(name = "threads")
 @Data
 public class Thread {
 
-    @Id
-    private int id;
-    private int boardId;
-    private String title;
-    private String content;
+  @Id private long id;
+  private long boardId;
+  private String title;
+  private String content;
 }

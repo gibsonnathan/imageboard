@@ -4,13 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
+@Entity(name = "images")
 @Data
 public class Image {
 
-    @Id
-    private int id;
-    private int postId;
-    private String imageUrl;
-
+  @Id private long id;
+  private long postId;
+  private String imageUrl;
 }

@@ -4,12 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
+@Entity(name = "boards")
 @Data
 public class Board {
 
-    @Id
-    private int id;
-    private String name;
-    private String description;
+  @Id private long id;
+  private String name;
+  private String description;
 }

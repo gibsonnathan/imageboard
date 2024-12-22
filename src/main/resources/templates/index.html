@@ -1,9 +1,23 @@
-<html>
-<script src="https://unpkg.com/htmx.org@2.0.4"
-        integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
-        crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <title>Image Board</title>
+    <link rel="stylesheet" th:href="@{style.css}">
+    <script src="https://unpkg.com/htmx.org@2.0.4"
+            integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous">
+    </script>
+</head>
 <body>
-
+<header>
+    <nav>
+        <ul>
+            <li th:each="board : ${boards}">
+                <a th:href="@{/boards/{boardId}(boardId=${board.id})}" th:text="${board.name}">Board Name</a>
+                <p th:text="${board.description}">Board Description</p>
+            </li>
+        </ul>
+    </nav>
+</header>
 </body>
 </html>
