@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: imageboard
+  docker:
+    compose:
+      enabled: true
+      file: compose.yml
+  datasource:
+    url: jdbc:mysql://localhost:3306/imageboard
+    username: imageboard
+    password: pass
