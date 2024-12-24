@@ -9,15 +9,15 @@
     </script>
 </head>
 <body>
-<header>
+<header id="header">
     <nav>
         <ul>
             <li th:each="board : ${boards}">
-                <a th:href="@{/boards/{boardId}(boardId=${board.id})}" th:text="${board.name}">Board Name</a>
-                <p th:text="${board.description}">Board Description</p>
+                <a th:attr="hx-get='/boards/' + ${board.id}, hx-target='#content'" th:text="${board.name}"></a>
             </li>
         </ul>
     </nav>
 </header>
+<div id="content"></div>
 </body>
 </html>
