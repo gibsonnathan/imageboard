@@ -1,9 +1,14 @@
+@import com.ndg.imageboard.entity.Board
+@import java.util.List
+
+@param List<Board> boards
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
     <title>Image Board</title>
-    <link rel="stylesheet" th:href="@{style.css}">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/htmx.org@2.0.4"
             integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous">
     </script>
@@ -12,9 +17,9 @@
 <header id="header">
     <nav>
         <ul>
-            <li th:each="board : ${boards}">
-                <a th:attr="hx-get='/boards/' + ${board.id}, hx-target='#content'" th:text="${board.name}"></a>
-            </li>
+            @for(var board : boards)
+                <a hx-get="${"/boards/" + board.getId()}" hx-target="#content">${board.getName()}</a>
+            @endfor
         </ul>
     </nav>
 </header>

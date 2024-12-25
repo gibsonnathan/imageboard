@@ -9,3 +9,10 @@ spring:
     url: jdbc:mysql://localhost:3306/imageboard
     username: imageboard
     password: pass
+  web:
+    resources:
+      static-locations[0]: file:src/main/resources/static/
+      static-locations[1]: classpath:/static/
+gg:
+  jte:
+    developmentMode: true

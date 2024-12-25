@@ -1,4 +1,4 @@
-INSERT INTO users (id, username, email, password) VALUES
+INSERT INTO users (id, username, email, password_hash) VALUES
   (1, 'johnDoe', 'john@example.com', 'password123'),
   (2, 'janeDoe', 'jane@example.com', 'password456'),
   (3, 'admin', 'admin@example.com', 'adminpassword');
