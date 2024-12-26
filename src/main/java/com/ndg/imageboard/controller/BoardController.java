@@ -7,10 +7,7 @@ import java.time.Instant;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/boards")
@@ -26,7 +23,7 @@ public class BoardController {
 
   @GetMapping("/{id}")
   public String index(
-      Model model, @PathVariable Long id, @RequestHeader(required = false) Instant before) {
+      Model model, @PathVariable Long id, @RequestParam Instant before) {
     Board board = boardService.findById(id).orElse(new Board());
     List<Thread> threads =
         threadService.findTenThreads(board.getId(), before != null ? before : Instant.now());
