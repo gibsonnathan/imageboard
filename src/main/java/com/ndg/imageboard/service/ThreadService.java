@@ -15,7 +15,7 @@ public class ThreadService {
     this.threadRepository = threadRepository;
   }
 
-  public List<Thread> findTenThreads(Long boardId, Instant before) {
-    return threadRepository.findTenThreads(boardId, before);
+  public List<Thread> findTenThreadsOrderedByLatestPost(Long boardId, Instant before) {
+    return threadRepository.findTenThreadsOrderedByLatestPost(boardId, before);
   }
 }

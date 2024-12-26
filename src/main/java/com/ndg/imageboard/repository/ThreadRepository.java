@@ -12,7 +12,18 @@ public interface ThreadRepository extends JpaRepository<Thread, Long> {
 
   @Query(
       value =
-          "SELECT * FROM threads WHERE board_id = :boardId and created_at < :time order by created_at desc LIMIT 10",
+          """
+              SELECT t.*
+              FROM threads t
+              LEFT JOIN (
+                SELECT thread_id, MAX(created_at) AS latest_post
+                FROM posts
+                GROUP BY thread_id
+              ) p ON t.id = p.thread_id
+              WHERE t.board_id = :boardId AND latest_post < :before
+              ORDER BY COALESCE(p.latest_post, t.created_at) DESC
+              LIMIT 10;
+              """,
       nativeQuery = true)
-  List<Thread> findTenThreads(Long boardId, Instant time);
+  List<Thread> findTenThreadsOrderedByLatestPost(Long boardId, Instant before);
 }

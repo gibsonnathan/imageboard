@@ -2,4 +2,13 @@
     border: 1px solid black;
     color:blue;
     margin-bottom:3px;
+    padding:3px;
+}
+
+.post {
+    border: 1px solid orange;
+    color:red;
+    margin-bottom:3px;
+    margin-left:3px;
+    padding:3px;
 }
