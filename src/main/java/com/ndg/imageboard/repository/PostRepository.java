@@ -18,5 +18,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             ORDER BY created_at DESC
             LIMIT 3""",
       nativeQuery = true)
-  List<Post> getMostRecentPosts(Long threadId);
+  List<Post> findMostRecentPosts(Long threadId);
+
+  @Query(
+      value =
+          """
+           SELECT *
+           FROM posts
+           WHERE thread_id = :threadId
+           ORDER BY created_at DESC
+          """,
+      nativeQuery = true)
+  List<Post> findAllForThread(Long threadId);
 }

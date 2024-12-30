@@ -14,7 +14,11 @@ public class PostService {
     this.postRepository = postRepository;
   }
 
-  public List<Post> getMostRecentPosts(Long threadId) {
-    return postRepository.getMostRecentPosts(threadId);
+  public List<Post> findMostRecentPosts(Long threadId) {
+    return postRepository.findMostRecentPosts(threadId);
+  }
+
+  public List<Post> findAllForThread(Long threadId) {
+    return postRepository.findAllForThread(threadId);
   }
 }

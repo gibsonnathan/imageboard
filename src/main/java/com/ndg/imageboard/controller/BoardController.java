@@ -37,7 +37,7 @@ public class BoardController {
 
     threads.forEach(
         thread -> {
-          List<Post> posts = postService.getMostRecentPosts(thread.getId());
+          List<Post> posts = postService.findMostRecentPosts(thread.getId());
           threadsToPosts.put(thread, posts);
         });
 

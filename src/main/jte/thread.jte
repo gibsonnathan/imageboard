@@ -1,20 +1,16 @@
 @import com.ndg.imageboard.entity.Board
 @import com.ndg.imageboard.entity.Post
 @import com.ndg.imageboard.entity.Thread
-@import java.util.LinkedHashMap
 @import java.util.List
 
 @param Board board
-@param LinkedHashMap<Thread, List<Post>> threadsToPosts
+@param Thread thread
+@param List<Post> posts
 
 <div>${board.getName()}</div>
 <div>${board.getDescription()}</div>
-@for(var thread: threadsToPosts.keySet().stream().toList())
     <div class="thread"
          id="thread-${thread.getId()}"
-         hx-get="/threads/${thread.getId()}"
-         hx-trigger="click"
-         hx-target="#content"
     >
         id:${thread.getId()}
         created: ${thread.getCreatedAt().toString()}
@@ -24,7 +20,7 @@
         <div>
             ${thread.getContent()}
         </div>
-        @for(var post : threadsToPosts.get(thread))
+        @for(var post : posts)
             <div class="post" id="post-${post.getId()}">
                 id:${post.getId()}
                 created: ${post.getCreatedAt().toString()}
@@ -32,4 +28,3 @@
             </div>
         @endfor
     </div>
-@endfor
